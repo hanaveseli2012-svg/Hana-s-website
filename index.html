@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIELLI X — Tennis Courts · Germia, Prishtina</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ── NAVIGATION ── -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">DIELLI X</a>
+      <ul class="nav-links">
+        <li><a href="#courts" data-i18n="navCourts">Courts</a></li>
+        <li><a href="#reserve" data-i18n="navReserve">Reserve</a></li>
+        <li><a href="#shop" data-i18n="navShop">Shop</a></li>
+        <li><a href="#rules" data-i18n="navRules">Rules &amp; Info</a></li>
+        <li><a href="#tournaments" data-i18n="navTournaments">Tournaments</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="lang-btn" id="langEn" aria-label="English">English</button>
+        <button class="lang-btn" id="langSq" aria-label="Shqip">Shqip</button>
+        <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="hero" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-location" data-i18n="heroLocation">Germia · Prishtina, Kosova</p>
+      <h1 class="hero-title">DIELLI X</h1>
+      <p class="hero-subtitle" data-i18n="heroSubtitle">TENNIS COURTS</p>
+      <p class="hero-description" data-i18n="heroDescription">Two premium courts nestled in Germia Park. Book your game, grab your gear, and join the community.</p>
+      <div class="hero-buttons">
+        <a href="#reserve" class="btn btn-primary" data-i18n="heroReserve">Reserve a Court</a>
+        <a href="#shop" class="btn btn-outline" data-i18n="heroShop">Shop Merch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── COURTS ── -->
+  <section id="courts" class="section courts-section">
+    <div class="container">
+      <h2 class="section-title" data-i18n="courtsTitle">Our Courts</h2>
+      <p class="section-subtitle" data-i18n="courtsSubtitle">Two premium courts in the heart of Germia Park</p>
+      <div class="courts-grid">
+        <div class="court-card">
+          <div class="court-number">01</div>
+          <h3 data-i18n="court1Name">Court Dielli</h3>
+          <p data-i18n="court1Desc">Our flagship court with tournament-grade surface, excellent lighting for evening play, and a perfect view of Germia's greenery.</p>
+          <ul class="court-features">
+            <li data-i18n="court1Feat1">Tournament-grade surface</li>
+            <li data-i18n="court1Feat2">Floodlights for evening play</li>
+            <li data-i18n="court1Feat3">Benches &amp; shade area</li>
+          </ul>
+        </div>
+        <div class="court-card">
+          <div class="court-number">02</div>
+          <h3 data-i18n="court2Name">Court Hëna</h3>
+          <p data-i18n="court2Desc">A slightly more sheltered court ideal for practice sessions and beginners. Same premium surface, just a touch more privacy.</p>
+          <ul class="court-features">
+            <li data-i18n="court2Feat1">Premium surface</li>
+            <li data-i18n="court2Feat2">Floodlights for evening play</li>
+            <li data-i18n="court2Feat3">Practice wall available</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RESERVATION ── -->
+  <section id="reserve" class="section reserve-section">
+    <div class="container">
+      <h2 class="section-title" data-i18n="reserveTitle">Reserve a Court</h2>
+      <p class="section-subtitle" data-i18n="reserveSubtitle">€5 per hour · Book 1 or 2 hours · Open daily 7:00 – 22:00</p>
+
+      <form id="reservationForm" class="reservation-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="courtSelect" data-i18n="labelCourt">Choose Court</label>
+            <select id="courtSelect" required>
+              <option value="" data-i18n="selectCourt">— Select —</option>
+              <option value="Court Dielli (01)" data-i18n="optionCourt1">Court Dielli (01)</option>
+              <option value="Court Hëna (02)" data-i18n="optionCourt2">Court Hëna (02)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="hoursSelect" data-i18n="labelHours">Number of Hours</label>
+            <select id="hoursSelect" required>
+              <option value="" data-i18n="selectCourt">— Select —</option>
+              <option value="1" data-i18n="optionHours1">1 Hour — €5</option>
+              <option value="2" data-i18n="optionHours2">2 Hours — €10</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="dateInput" data-i18n="labelDate">Date</label>
+            <input type="date" id="dateInput" required min="">
+          </div>
+          <div class="form-group">
+            <label for="timeInput" data-i18n="labelTime">Start Time</label>
+            <input type="time" id="timeInput" required min="07:00" max="21:00">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nameInput" data-i18n="labelName">Full Name</label>
+            <input type="text" id="nameInput" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label for="emailInput" data-i18n="labelEmail">Email</label>
+            <input type="email" id="emailInput" placeholder="your@email.com" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="phoneInput" data-i18n="labelPhone">Phone Number</label>
+          <input type="tel" id="phoneInput" placeholder="+383 ..." required>
+        </div>
+
+        <div class="reservation-summary" id="reservationSummary">
+          <p><strong data-i18n="totalLabel">Total:</strong> <span id="totalPrice">€0</span></p>
+          <p class="summary-note" data-i18n="summaryNote">Payment is made in cash at the courts. Please arrive 10 minutes early.</p>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" data-i18n="reserveBtn">Confirm Reservation</button>
+      </form>
+
+      <div id="confirmationMessage" class="confirmation hidden">
+        <div class="confirmation-card">
+          <span class="confirmation-icon">✓</span>
+          <h3 id="confirmTitle" data-i18n="confirmTitle">Reservation Confirmed!</h3>
+          <p id="confirmationDetails"></p>
+          <p id="confirmSent" data-i18n="confirmSent">We've sent a confirmation to your email. See you on the court! 🎾</p>
+          <button class="btn btn-outline" id="confirmBookAnother" data-i18n="confirmBookAnother" onclick="document.getElementById('confirmationMessage').classList.add('hidden'); document.getElementById('reservationForm').classList.remove('hidden');">Book Another</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SHOP ── -->
+  <section id="shop" class="section shop-section">
+    <div class="container">
+      <h2 class="section-title" data-i18n="shopTitle">DIELLI X Merch</h2>
+      <p class="section-subtitle" data-i18n="shopSubtitle">Represent the court. All prices in EUR.</p>
+
+      <div class="shop-grid" id="shopGrid">
+        <!-- Generated by JS -->
+      </div>
+
+      <!-- Cart -->
+      <div class="cart-panel" id="cartPanel">
+        <div class="cart-header">
+          <h3 id="cartHeading" data-i18n="cartTitle">🛒 Your Cart</h3>
+          <span id="cartCount">0 items</span>
+        </div>
+        <div class="cart-items" id="cartItems">
+          <p class="cart-empty" data-i18n="cartEmpty">Your cart is empty.</p>
+        </div>
+        <div class="cart-footer">
+          <p class="cart-total"><span data-i18n="cartTotal">Total:</span> <span id="cartTotal">€0.00</span></p>
+          <button class="btn btn-primary btn-block" id="checkoutBtn" data-i18n="checkoutBtn" disabled>Checkout</button>
+          <p class="cart-note" data-i18n="cartNote">Pick up your merch at the courts — we'll have it ready!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RULES & INFO ── -->
+  <section id="rules" class="section rules-section">
+    <div class="container">
+      <h2 class="section-title" data-i18n="rulesTitle">Rules &amp; Information</h2>
+
+      <div class="rules-grid">
+        <!-- Rules -->
+        <div class="info-card rules-card">
+          <h3 data-i18n="rulesHeading">📋 Court Rules</h3>
+          <ul>
+            <li data-i18n="rule1"><strong>Equipment:</strong> You must bring your own tennis rackets and tennis balls. We do not provide equipment.</li>
+            <li data-i18n="rule2"><strong>No animals allowed</strong> on or near the courts.</li>
+            <li data-i18n="rule3"><strong>Proper tennis attire</strong> required — tennis shoes only (no black-soled shoes that mark the court).</li>
+            <li data-i18n="rule4"><strong>Respect the schedule:</strong> Arrive on time. Late arrivals still finish at the booked end time.</li>
+            <li data-i18n="rule5"><strong>Maximum 4 players</strong> per court at any time.</li>
+            <li data-i18n="rule6"><strong>No food or drinks</strong> (except water) on the court surface.</li>
+            <li data-i18n="rule7"><strong>Keep noise down</strong> — respect other players and the park environment.</li>
+            <li data-i18n="rule8"><strong>Clean up</strong> after yourself. Leave the court as you found it.</li>
+            <li data-i18n="rule9"><strong>Weather policy:</strong> Courts are outdoor. No refunds for rain, but we'll reschedule if available.</li>
+          </ul>
+        </div>
+
+        <!-- How-Tos -->
+        <div class="info-card tips-card">
+          <h3 data-i18n="tipsHeading">🎾 How to Play: Tips</h3>
+
+          <div class="tip">
+            <h4 data-i18n="tipForehandTitle">The Forehand</h4>
+            <p data-i18n="tipForehand">Start with your racket back, body turned sideways. Step into the ball with your front foot, swing low-to-high, and follow through over your opposite shoulder. Keep your eyes on the ball through contact. The forehand is your power shot — use it to dictate play.</p>
+          </div>
+
+          <div class="tip">
+            <h4 data-i18n="tipBackhandTitle">The Backhand</h4>
+            <p data-i18n="tipBackhand">For a two-handed backhand, grip the racket with your dominant hand lower and non-dominant hand above it. Rotate your shoulders, step in, and swing through the ball with both hands. For one-handed, extend your non-dominant arm back for balance. Finish high.</p>
+          </div>
+
+          <div class="tip">
+            <h4 data-i18n="tipServeTitle">The Serve</h4>
+            <p data-i18n="tipServe">Stand sideways behind the baseline. Toss the ball slightly in front and above your hitting shoulder. Arch your back, reach up, and snap your wrist through contact. Aim for the service box diagonally opposite. A consistent serve wins matches.</p>
+          </div>
+
+          <div class="tip">
+            <h4 data-i18n="tipVolleyTitle">The Volley</h4>
+            <p data-i18n="tipVolley">At the net, keep your racket up and in front. No backswing — just punch through the ball with a short, firm motion. Stay on your toes and ready to move. Volleys are about reflexes and positioning, not power.</p>
+          </div>
+
+          <div class="tip">
+            <h4 data-i18n="tipScoringTitle">Scoring Basics</h4>
+            <p data-i18n="tipScoring">Points: Love (0) → 15 → 30 → 40 → Game. If tied at 40-40 ("deuce"), win two points in a row to take the game. Games → Set: First to 6 games, win by 2. At 6-6, a tiebreak is usually played. Sets → Match: Best of 3 or best of 5 sets depending on the tournament.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TOURNAMENTS ── -->
+  <section id="tournaments" class="section tournaments-section">
+    <div class="container">
+      <h2 class="section-title" data-i18n="tournamentsTitle">Tournaments</h2>
+      <p class="section-subtitle" data-i18n="tournamentsSubtitle">Compete, connect, and level up your game</p>
+
+      <div class="tournaments-grid">
+        <div class="tournament-card">
+          <span class="tournament-badge" data-i18n="tournament1Badge">Upcoming</span>
+          <h3 data-i18n="tournament1Name">DIELLI X Summer Open</h3>
+          <p class="tournament-date" data-i18n="tournament1Date">📅 July 15–20, 2026</p>
+          <p class="tournament-info" data-i18n="tournament1Info">Singles &amp; Doubles · All levels welcome · Prize pool: €500</p>
+          <p class="tournament-fee" data-i18n="tournament1Fee">Entry fee: €15 per player</p>
+        </div>
+        <div class="tournament-card">
+          <span class="tournament-badge upcoming-badge" data-i18n="tournament2Badge">Coming Soon</span>
+          <h3 data-i18n="tournament2Name">Germia Junior Cup</h3>
+          <p class="tournament-date" data-i18n="tournament2Date">📅 August 2026</p>
+          <p class="tournament-info" data-i18n="tournament2Info">Ages 10–17 · Singles only · Trophies &amp; medals</p>
+          <p class="tournament-fee" data-i18n="tournament2Fee">Entry fee: €10 per player</p>
+        </div>
+      </div>
+
+      <div class="register-form-wrapper">
+        <h3 data-i18n="registerTitle">Register for a Tournament</h3>
+        <form id="tournamentForm" class="tournament-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="tournamentSelect" data-i18n="labelTournament">Tournament</label>
+              <select id="tournamentSelect" required>
+                <option value="" data-i18n="selectTournament">— Select —</option>
+                <option value="DIELLI X Summer Open" data-i18n="optionTournament1">DIELLI X Summer Open (July 15–20)</option>
+                <option value="Germia Junior Cup" data-i18n="optionTournament2">Germia Junior Cup (August 2026)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="categorySelect" data-i18n="labelCategory">Category</label>
+              <select id="categorySelect" required>
+                <option value="" data-i18n="selectCategory">— Select —</option>
+                <option value="Singles" data-i18n="optionSingles">Singles</option>
+                <option value="Doubles" data-i18n="optionDoubles">Doubles</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="tNameInput" data-i18n="labelTName">Full Name</label>
+              <input type="text" id="tNameInput" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label for="tEmailInput" data-i18n="labelTEmail">Email</label>
+              <input type="email" id="tEmailInput" placeholder="your@email.com" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="tPhoneInput" data-i18n="labelTPhone">Phone</label>
+              <input type="tel" id="tPhoneInput" placeholder="+383 ..." required>
+            </div>
+            <div class="form-group">
+              <label for="tLevelInput" data-i18n="labelLevel">Skill Level</label>
+              <select id="tLevelInput" required>
+                <option value="" data-i18n="selectLevel">— Select —</option>
+                <option value="Beginner" data-i18n="optionBeginner">Beginner</option>
+                <option value="Intermediate" data-i18n="optionIntermediate">Intermediate</option>
+                <option value="Advanced" data-i18n="optionAdvanced">Advanced</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" data-i18n="registerBtn">Register for Tournament</button>
+        </form>
+        <div id="tournamentConfirmation" class="confirmation hidden">
+          <div class="confirmation-card">
+            <span class="confirmation-icon">🏆</span>
+            <h3 data-i18n="tournamentConfirmTitle">Registered!</h3>
+            <p id="tournamentDetails"></p>
+            <p data-i18n="tournamentConfirmMsg">Check your email for tournament details and payment instructions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h2>DIELLI X</h2>
+          <p data-i18n="footerBrand">Tennis courts in Germia Park, Prishtina, Kosova</p>
+        </div>
+        <div class="footer-links">
+          <h4 data-i18n="footerQuick">Quick Links</h4>
+          <ul>
+            <li><a href="#courts" data-i18n="navCourts">Courts</a></li>
+            <li><a href="#reserve" data-i18n="navReserve">Reserve</a></li>
+            <li><a href="#shop" data-i18n="navShop">Shop</a></li>
+            <li><a href="#rules" data-i18n="navRules">Rules</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4 data-i18n="footerContact">Contact</h4>
+          <ul>
+            <li data-i18n="footerAddress">📍 Germia Park, Prishtina</li>
+            <li>📞 +383 44 000 000</li>
+            <li>📧 info@diellix.com</li>
+          </ul>
+        </div>
+        <div class="footer-hours">
+          <h4 data-i18n="footerHours">Hours</h4>
+          <ul>
+            <li data-i18n="footerEveryDay">Every day</li>
+            <li>7:00 – 22:00</li>
+            <li data-i18n="footerHourRate">€5 / hour</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p data-i18n="footerCopyright">&copy; 2026 DIELLI X. All rights reserved. | Germia, Prishtina, Kosova</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
