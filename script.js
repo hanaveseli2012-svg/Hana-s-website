@@ -5,7 +5,13 @@
 // ── SUPABASE ──
 const SUPABASE_URL = 'https://nmontinovgrxfohdecrh.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_P4MfzbM_TXR5v-0cy9mv7w_qdJ8ryvJ';
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+let supabase = null;
+function getSupabase() {
+  if (!supabase && window.supabase) {
+    supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  }
+  return supabase;
+}
 
 // ── TRANSLATIONS ──
 const translations = {
