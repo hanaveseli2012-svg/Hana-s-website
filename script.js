@@ -5,12 +5,21 @@
 // ── SUPABASE ──
 const SUPABASE_URL = 'https://nmontinovgrxfohdecrh.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_P4MfzbM_TXR5v-0cy9mv7w_qdJ8ryvJ';
-let supabase = null;
-function getSupabase() {
-  if (!supabase && window.supabase) {
-    supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-  }
-  return supabase;
+
+function supabaseInsert(table, data) {
+  return fetch(`${SUPABASE_URL}/rest/v1/${table}`, {
+    method: 'POST',
+    headers: {
+      'apikey': SUPABASE_KEY,
+      'Authorization': `Bearer ${SUPABASE_KEY}`,
+      'Content-Type': 'application/json',
+      'Prefer': 'return=minimal'
+    },
+    body: JSON.stringify(data)
+  }).then(r => {
+    if (!r.ok) console.error('Supabase error:', r.status, r.statusText);
+    return r;
+  }).catch(e => console.warn('Supabase unavailable:', e.message));
 }
 
 // ── TRANSLATIONS ──
@@ -487,12 +496,9 @@ function setupReservationForm() {
     const hourWord = hours === '1' ? (currentLang === 'sq' ? 'orë' : 'hour') : (currentLang === 'sq' ? 'orë' : 'hours');
 
     // Save to Supabase
-    const db = getSupabase();
-    if (db) db.from('reservations').insert([{
+    supabaseInsert('reservations', {
       court, hours: parseInt(hours), date, time,
       name, email, phone, total_euros: total
-    }]).then(({ error }) => {
-      if (error) console.error('Supabase error:', error);
     });
 
     const details = document.getElementById('confirmationDetails');
@@ -618,11 +624,8 @@ function setupCheckout() {
     const orderItems = cart.map(item => ({
       name: t(item.nameKey), price: item.price, qty: item.qty
     }));
-    const db = getSupabase();
-    if (db) db.from('orders').insert([{
+    supabaseInsert('orders', {
       items: orderItems, total_euros: total
-    }]).then(({ error }) => {
-      if (error) console.error('Supabase error:', error);
     });
 
     cart = [];
@@ -658,11 +661,8 @@ function setupTournamentForm() {
     `;
 
     // Save to Supabase
-    const db = getSupabase();
-    if (db) db.from('tournament_registrations').insert([{
+    supabaseInsert('tournament_registrations', {
       tournament, category, name, email, phone, skill_level: level
-    }]).then(({ error }) => {
-      if (error) console.error('Supabase error:', error);
     });
 
     form.reset();
