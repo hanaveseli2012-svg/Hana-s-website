@@ -487,7 +487,8 @@ function setupReservationForm() {
     const hourWord = hours === '1' ? (currentLang === 'sq' ? 'orë' : 'hour') : (currentLang === 'sq' ? 'orë' : 'hours');
 
     // Save to Supabase
-    supabase.from('reservations').insert([{
+    const db = getSupabase();
+    if (db) db.from('reservations').insert([{
       court, hours: parseInt(hours), date, time,
       name, email, phone, total_euros: total
     }]).then(({ error }) => {
@@ -617,7 +618,8 @@ function setupCheckout() {
     const orderItems = cart.map(item => ({
       name: t(item.nameKey), price: item.price, qty: item.qty
     }));
-    supabase.from('orders').insert([{
+    const db = getSupabase();
+    if (db) db.from('orders').insert([{
       items: orderItems, total_euros: total
     }]).then(({ error }) => {
       if (error) console.error('Supabase error:', error);
@@ -656,7 +658,8 @@ function setupTournamentForm() {
     `;
 
     // Save to Supabase
-    supabase.from('tournament_registrations').insert([{
+    const db = getSupabase();
+    if (db) db.from('tournament_registrations').insert([{
       tournament, category, name, email, phone, skill_level: level
     }]).then(({ error }) => {
       if (error) console.error('Supabase error:', error);
