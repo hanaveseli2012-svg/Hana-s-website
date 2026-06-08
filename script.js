@@ -2,6 +2,11 @@
    DIELLI X — Interactive Functionality
    ═══════════════════════════════════════════ */
 
+// ── SUPABASE ──
+const SUPABASE_URL = 'https://nmontinovgrxfohdecrh.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_P4MfzbM_TXR5v-0cy9mv7w_qdJ8ryvJ';
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
 // ── TRANSLATIONS ──
 const translations = {
   en: {
@@ -475,6 +480,14 @@ function setupReservationForm() {
     const endTime = `${endHour}:${m.toString().padStart(2, '0')}`;
     const hourWord = hours === '1' ? (currentLang === 'sq' ? 'orë' : 'hour') : (currentLang === 'sq' ? 'orë' : 'hours');
 
+    // Save to Supabase
+    supabase.from('reservations').insert([{
+      court, hours: parseInt(hours), date, time,
+      name, email, phone, total_euros: total
+    }]).then(({ error }) => {
+      if (error) console.error('Supabase error:', error);
+    });
+
     const details = document.getElementById('confirmationDetails');
     details.innerHTML = `
       <strong>${name}</strong><br>
@@ -594,6 +607,16 @@ function setupCheckout() {
       .replace('{total}', total.toFixed(2));
     alert(msg);
 
+    // Save to Supabase
+    const orderItems = cart.map(item => ({
+      name: t(item.nameKey), price: item.price, qty: item.qty
+    }));
+    supabase.from('orders').insert([{
+      items: orderItems, total_euros: total
+    }]).then(({ error }) => {
+      if (error) console.error('Supabase error:', error);
+    });
+
     cart = [];
     updateCartUI();
   });
@@ -625,6 +648,13 @@ function setupTournamentForm() {
       🎾 ${category} · ${level}<br>
       📧 ${email} · 📞 ${phone}
     `;
+
+    // Save to Supabase
+    supabase.from('tournament_registrations').insert([{
+      tournament, category, name, email, phone, skill_level: level
+    }]).then(({ error }) => {
+      if (error) console.error('Supabase error:', error);
+    });
 
     form.reset();
     document.getElementById('tournamentConfirmation').classList.remove('hidden');
